@@ -8,7 +8,9 @@ function App() {
   const [binarySum, setBinarySum] = useState(0);
   const [showSum, setShowSum] = useState(false);
   const [showPlaceValue, setShowPlaceValue] = useState(false);
+  const [showSolution, setShowAddition] = useState(false);
   const [renderedString, setRenderedString] = useState([]);
+  const [solutionString, setSolutionString] = useState('');
   
 
   function generateRandomBinary(digits) {
@@ -41,7 +43,7 @@ function App() {
     const string = placeValueMap.map((item, index) => {
       return (
         <span className="binaryString" key={index}>
-          {item.digit} <sup className={showPlaceValue === true ? "show" : "hide"}>{item.placeValue}</sup>
+          {item.digit} <sup className={showPlaceValue === true ? "show" : "hide"}><span className={item.digit == 1 ? "success" : "gray"}>{item.placeValue}</span></sup>
         </span>
       )
     })
@@ -49,9 +51,17 @@ function App() {
     setRenderedString(string.reverse());
   }
 
+  function renderSolution() {
+    const string = placeValueMap.reduce((acc, curr, index) => {
+      return curr.digit == 0 ? acc : acc.concat(curr.placeValue);
+    }, []);
+    setSolutionString(string.join('+'));
+  }
+
   function binaryToDec() {
     const sum = placeValueMap.reduce((acc, curr) => {
       if(curr.digit == 0) return acc;
+      // setAdditionString(`${curr.placeValue} + ${acc}`);
       return curr.placeValue + acc;
     }, 0);
 
@@ -69,6 +79,7 @@ function App() {
   useEffect(() => {
     binaryToDec();
     renderString();
+    renderSolution();
   }, [placeValueMap, showPlaceValue])
 
   useEffect(() => {
@@ -90,7 +101,9 @@ function App() {
       }<sub>2</sub>
       </p>
 
-    <p>{showSum ? binarySum : null}</p>
+    <p class="success"><strong>{showSum ? binarySum : null}</strong></p>
+
+    <p><small>{showSolution ? `${solutionString} = ${binarySum}` : null}</small></p>
       <button onClick={() => setDigits(digits - 1)}>
         -
       </button>
@@ -102,6 +115,9 @@ function App() {
       </button>
       <button onClick={() => setShowPlaceValue(!showPlaceValue)}>
         {showPlaceValue ? 'Hide Place Values' : 'Show place Values'}
+      </button>
+      <button onClick={() => setShowAddition(!showSolution)}>
+        {showSolution ? 'Hide Calculation' : 'Show Calculation'}
       </button>
     </div>
   );

@@ -2,10 +2,18 @@
   text-align: center;
 }
 
-.binaryString sup {
+.danger {
   color: red;
 }
 
 .hide {
   display: none;
+}
+
+.gray {
+  color: gray;
+}
+
+.success {
+  color: green;
 }
