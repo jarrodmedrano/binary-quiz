@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
+  const [digits, setDigits] = useState(0);
+  const [binaryNum, setBinaryNum] = useState('');
+
+  function generateRandomBinary(digits) {
+    let binaryString = '';
+
+    for(let i = 0; i < digits; i++) {
+      binaryString += (Math.random()>0.5)? 1 : 0;
+    }
+
+    setBinaryNum(binaryString);
+  }
+
+  function binarytoDec(binaryString) {
+    const splitBinary = binaryString.split('');
+
+    splitBinary.map((digit, index) => {
+      
+    })
+  }
+
+  useEffect(() => {
+    generateRandomBinary(digits);
+  }, [digits])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        Binary Quiz
       </header>
+
+      <p>{ 
+     binaryNum
+      }</p>
+      <button onClick={() => setDigits(digits - 1)}>
+        -
+      </button>
+      <button onClick={() => setDigits(digits + 1)}>
+        +
+      </button>
     </div>
   );
 }
