@@ -6,6 +6,7 @@ function App() {
   const [binaryNum, setBinaryNum] = useState('');
   const [placeValueMap, setPlaceValueMap] = useState([]);
   const [binarySum, setBinarySum] = useState(0);
+  const [showSum, setShowSum] = useState(false);
 
   function generateRandomBinary(digits) {
     let binaryString = '';
@@ -65,12 +66,15 @@ function App() {
      binaryNum
       }</p>
 
-    <p>{binarySum}</p>
+    <p>{showSum ? binarySum : null}</p>
       <button onClick={() => setDigits(digits - 1)}>
         -
       </button>
       <button onClick={() => setDigits(digits + 1)}>
         +
+      </button>
+      <button onClick={() => setShowSum(!showSum)}>
+        {showSum ? 'Hide result' : 'Show result'}
       </button>
     </div>
   );
