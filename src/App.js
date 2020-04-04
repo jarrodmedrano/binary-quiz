@@ -7,6 +7,9 @@ function App() {
   const [placeValueMap, setPlaceValueMap] = useState([]);
   const [binarySum, setBinarySum] = useState(0);
   const [showSum, setShowSum] = useState(false);
+  const [showPlaceValue, setShowPlaceValue] = useState(false);
+  const [renderedString, setRenderedString] = useState([]);
+  
 
   function generateRandomBinary(digits) {
     let binaryString = '';
@@ -34,10 +37,22 @@ function App() {
     setPlaceValueMap(placeValueMap);
   }
 
-  function binaryToDec(placeValueMap) {
-    const sum = placeValueMap.reduce((acc, curr, index) => {
+  function renderString() {
+    const string = placeValueMap.map((item, index) => {
+      return (
+        <span className="binaryString" key={index}>
+          {item.digit} <sup className={showPlaceValue === true ? "show" : "hide"}>{item.placeValue}</sup>
+        </span>
+      )
+    })
+
+    setRenderedString(string.reverse());
+  }
+
+  function binaryToDec() {
+    const sum = placeValueMap.reduce((acc, curr) => {
       if(curr.digit == 0) return acc;
-      return curr.placeValue += acc;
+      return curr.placeValue + acc;
     }, 0);
 
     setBinarySum(sum);
@@ -52,9 +67,17 @@ function App() {
   }, [binaryNum]);
 
   useEffect(() => {
-    binaryToDec(placeValueMap);
-  }, [placeValueMap])
-  
+    binaryToDec();
+    renderString();
+  }, [placeValueMap, showPlaceValue])
+
+  useEffect(() => {
+    setDigits(5);
+  }, [])
+
+  useEffect(() => {
+    console.log(showPlaceValue);
+  }, [showPlaceValue])
 
   return (
     <div className="App">
@@ -63,8 +86,9 @@ function App() {
       </header>
 
       <p>{ 
-     binaryNum
-      }</p>
+    renderedString
+      }<sub>2</sub>
+      </p>
 
     <p>{showSum ? binarySum : null}</p>
       <button onClick={() => setDigits(digits - 1)}>
@@ -75,6 +99,9 @@ function App() {
       </button>
       <button onClick={() => setShowSum(!showSum)}>
         {showSum ? 'Hide result' : 'Show result'}
+      </button>
+      <button onClick={() => setShowPlaceValue(!showPlaceValue)}>
+        {showPlaceValue ? 'Hide Place Values' : 'Show place Values'}
       </button>
     </div>
   );
