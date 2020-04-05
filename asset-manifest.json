@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/binary-quiz/static/css/main.60868b9f.chunk.css",
+    "main.js": "/binary-quiz/static/js/main.6c98208f.chunk.js",
+    "main.js.map": "/binary-quiz/static/js/main.6c98208f.chunk.js.map",
+    "runtime-main.js": "/binary-quiz/static/js/runtime-main.684dbf63.js",
+    "runtime-main.js.map": "/binary-quiz/static/js/runtime-main.684dbf63.js.map",
+    "static/js/2.640c4fe7.chunk.js": "/binary-quiz/static/js/2.640c4fe7.chunk.js",
+    "static/js/2.640c4fe7.chunk.js.map": "/binary-quiz/static/js/2.640c4fe7.chunk.js.map",
+    "index.html": "/binary-quiz/index.html",
+    "precache-manifest.4b5faddcc1cd347fc2de972dfb5c4942.js": "/binary-quiz/precache-manifest.4b5faddcc1cd347fc2de972dfb5c4942.js",
+    "service-worker.js": "/binary-quiz/service-worker.js",
+    "static/css/main.60868b9f.chunk.css.map": "/binary-quiz/static/css/main.60868b9f.chunk.css.map",
+    "static/js/2.640c4fe7.chunk.js.LICENSE.txt": "/binary-quiz/static/js/2.640c4fe7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.684dbf63.js",
+    "static/js/2.640c4fe7.chunk.js",
+    "static/css/main.60868b9f.chunk.css",
+    "static/js/main.6c98208f.chunk.js"
+  ]
+}
