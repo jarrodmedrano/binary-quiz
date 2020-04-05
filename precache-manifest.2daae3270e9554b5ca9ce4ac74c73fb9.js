@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d64bcaf3a3430448c5d0b36938449936",
+    "revision": "850f74942b71180ade799914a4489091",
     "url": "/binary-quiz/index.html"
   },
   {
-    "revision": "372402eeefa2bc7d6da4",
-    "url": "/binary-quiz/static/css/main.60868b9f.chunk.css"
+    "revision": "28903a6a8eded9be1981",
+    "url": "/binary-quiz/static/css/main.083c23fe.chunk.css"
   },
   {
     "revision": "6be5b30a0c0b102a2122",
@@ -16,7 +16,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/binary-quiz/static/js/2.640c4fe7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "372402eeefa2bc7d6da4",
+    "revision": "28903a6a8eded9be1981",
     "url": "/binary-quiz/static/js/main.6c98208f.chunk.js"
   },
   {
