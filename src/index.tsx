@@ -1,12 +1,20 @@
+import { Layout } from 'antd';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+const { Header, Content, Footer } = Layout;
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Layout className="layout">
+      <Header style={{ background: 'transparent' }} />
+      <Content style={{ padding: '0 50px' }}>
+        <App />
+      </Content>
+      <Footer />
+    </Layout>
   </React.StrictMode>,
   document.getElementById('root')
 );

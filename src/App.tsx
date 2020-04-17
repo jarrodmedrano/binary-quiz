@@ -1,5 +1,7 @@
+import { Button, Card, Col, Row, Space } from 'antd';
 import React, { ReactElement, useEffect, useState } from 'react';
 import './App.css';
+const { Meta } = Card;
 
 interface IPlaceValue {
   placeValue: number;
@@ -93,7 +95,9 @@ function App() {
   }, []);
 
   const decrement = React.useCallback(() => {
-    setDigits(() => digits - 1);
+    if (digits > 1) {
+      setDigits(() => digits - 1);
+    }
   }, [digits]);
 
   const increment = React.useCallback(() => {
@@ -113,25 +117,35 @@ function App() {
   }, [showSolution]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        Binary Quiz
-      </header>
-      <p>{renderedString}<sub>2</sub></p>
-      <p className="success"><strong>{showSum ? binarySum : null}</strong></p>
-      <p><small>{showSolution ? `${solutionString} = ${binarySum}` : null}</small></p>
-      <button onClick={decrement}>-</button>
-      <button onClick={increment}>+</button>
-      <button onClick={toggleSum}>
-        {showSum ? 'Hide result' : 'Show result'}
-      </button>
-      <button onClick={togglePlaceValue}>
-        {showPlaceValue ? 'Hide Place Values' : 'Show place Values'}
-      </button>
-      <button onClick={toggleCalculation}>
-        {showSolution ? 'Hide Calculation' : 'Show Calculation'}
-      </button>
-    </div>
+    <Row justify="center" gutter={16}>
+      <Col span={12}>
+        <div className="App">
+          <Space direction="vertical">
+            <Card
+              title="Convert Binary to Decimal"
+            >
+              <h2>{renderedString}<sub>2</sub></h2>
+              <h2 className="success"><strong>{showSum ? binarySum : null}</strong></h2>
+              <h3><small>{showSolution ? `${solutionString} = ${binarySum}` : null}</small></h3>
+            </Card>
+          </Space>
+          <br /><br />
+          <Space>
+            <Button type="primary" shape="circle" onClick={increment}>+</Button>
+            <Button type="primary" shape="circle" onClick={decrement}>-</Button>
+            <Button onClick={toggleSum}>
+              {showSum ? 'Hide result' : 'Show result'}
+            </Button>
+            <Button onClick={togglePlaceValue}>
+              {showPlaceValue ? 'Hide Place Values' : 'Show place Values'}
+            </Button>
+            <Button onClick={toggleCalculation}>
+              {showSolution ? 'Hide Calculation' : 'Show Calculation'}
+            </Button>
+          </Space>
+        </div>
+      </Col>
+    </Row>
   );
 }
 
