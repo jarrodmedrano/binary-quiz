@@ -13,7 +13,7 @@ function App() {
   const [binarySum, setBinarySum] = useState<number>(0);
   const [showSum, setShowSum] = useState<boolean>(false);
   const [showPlaceValue, setShowPlaceValue] = useState<boolean>(false);
-  const [showSolution, setShowAddition] = useState<boolean>(false);
+  const [showSolution, setShowSolution] = useState<boolean>(false);
   const [renderedString, setRenderedString] = useState<ReactElement[]>([]);
   const [solutionString, setSolutionString] = useState<string>('');
 
@@ -94,23 +94,23 @@ function App() {
 
   const decrement = React.useCallback(() => {
     setDigits(() => digits - 1);
-  }, []);
+  }, [digits]);
 
   const increment = React.useCallback(() => {
     setDigits(() => digits + 1);
-  }, []);
+  }, [digits]);
 
   const toggleSum = React.useCallback(() => {
     setShowSum(!showSum);
-  }, []);
+  }, [showSum]);
 
   const togglePlaceValue = React.useCallback(() => {
     setShowPlaceValue(!showPlaceValue);
-  }, []);
+  }, [showPlaceValue]);
 
   const toggleCalculation = React.useCallback(() => {
-    setShowAddition(!showPlaceValue);
-  }, []);
+    setShowSolution(!showSolution);
+  }, [showSolution]);
 
   return (
     <div className="App">
