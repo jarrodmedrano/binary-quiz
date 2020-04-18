@@ -1,7 +1,6 @@
-import { Button, Card, Col, Layout, Row, Space } from 'antd';
+import { Button, Card, Col, Form, InputNumber, Layout, Row, Space } from 'antd';
 import React, { ReactElement, useEffect, useState } from 'react';
 import './ToDecimal.css';
-const { Meta } = Card;
 const { Header } = Layout;
 
 interface IPlaceValue {
@@ -10,6 +9,7 @@ interface IPlaceValue {
 }
 
 function ToDecimal() {
+  const [numberBase, setNumberBase] = useState<number>(2);
   const [digits, setDigits] = useState<number>(0);
   const [binaryNum, setBinaryNum] = useState<string>('');
   const [placeValueMap, setPlaceValueMap] = useState<IPlaceValue[]>([]);
@@ -39,7 +39,7 @@ function ToDecimal() {
       }
       return {
         digit: int,
-        placeValue: Math.pow(2, index),
+        placeValue: Math.pow(numberBase, index),
       };
     });
 
@@ -70,7 +70,6 @@ function ToDecimal() {
       if (curr.digit === '0') {
         return acc;
       }
-      // setAdditionString(`${curr.placeValue} + ${acc}`);
       return curr.placeValue + acc;
     }, 0);
 
@@ -83,13 +82,13 @@ function ToDecimal() {
 
   useEffect(() => {
     mapPlaceValues(binaryNum);
-  }, [binaryNum]);
+  }, [binaryNum, numberBase]);
 
   useEffect(() => {
     binaryToDec();
     renderString();
     renderSolution();
-  }, [placeValueMap, showPlaceValue]);
+  }, [placeValueMap, showPlaceValue, numberBase]);
 
   useEffect(() => {
     setDigits(5);
@@ -117,15 +116,33 @@ function ToDecimal() {
     setShowSolution(!showSolution);
   }, [showSolution]);
 
+  function onBaseChange(val: number): void {
+    setNumberBase(val);
+  }
+
   return (
     <div className="BinaryToDecimal">
       <Header style={{ background: 'transparent' }} />
       <Row gutter={[16, 16]}>
         <Col span={24}>
+          <Form.Item label="Number Base">
+            <InputNumber
+              name="base"
+              min={1}
+              max={100}
+              defaultValue={numberBase}
+              onChange={onBaseChange}
+              autoFocus={true}
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
           <Card
-            title="Convert Binary to Decimal"
+            title="Convert (Base) to Decimal"
           >
-            <h2>{renderedString}<sub>2</sub></h2>
+            <h2>{renderedString}<sub>{numberBase}</sub></h2>
           </Card>
         </Col>
       </Row>
