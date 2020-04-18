@@ -117,7 +117,7 @@ function App() {
   }, [showSolution]);
 
   return (
-    <Row justify="center" gutter={16}>
+    <Row justify="center" gutter={[16, 16]}>
       <Col span={12}>
         <div className="App">
           <Space direction="vertical">
