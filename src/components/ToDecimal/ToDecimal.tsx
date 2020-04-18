@@ -121,14 +121,33 @@ function ToDecimal() {
     <div className="BinaryToDecimal">
       <Header style={{ background: 'transparent' }} />
       <Row gutter={[16, 16]}>
-        <Col span={6}>
+        <Col span={24}>
           <Card
             title="Convert Binary to Decimal"
           >
             <h2>{renderedString}<sub>2</sub></h2>
           </Card>
         </Col>
-        <Col span={6}>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <Space>
+            <Button type="primary" shape="circle" onClick={increment}>+</Button>
+            <Button type="primary" shape="circle" onClick={decrement}>-</Button>
+            <Button onClick={toggleSum}>
+              {showSum ? 'Hide result' : 'Show result'}
+            </Button>
+            <Button onClick={togglePlaceValue}>
+              {showPlaceValue ? 'Hide Place Values' : 'Show place Values'}
+            </Button>
+            <Button onClick={toggleCalculation}>
+              {showSolution ? 'Hide Calculation' : 'Show Calculation'}
+            </Button>
+          </Space>
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
           <Card
             title="Solution"
           >
@@ -137,19 +156,6 @@ function ToDecimal() {
           </Card>
         </Col>
       </Row>
-      <Space>
-        <Button type="primary" shape="circle" onClick={increment}>+</Button>
-        <Button type="primary" shape="circle" onClick={decrement}>-</Button>
-        <Button onClick={toggleSum}>
-          {showSum ? 'Hide result' : 'Show result'}
-        </Button>
-        <Button onClick={togglePlaceValue}>
-          {showPlaceValue ? 'Hide Place Values' : 'Show place Values'}
-        </Button>
-        <Button onClick={toggleCalculation}>
-          {showSolution ? 'Hide Calculation' : 'Show Calculation'}
-        </Button>
-      </Space>
     </div>
   );
 }
