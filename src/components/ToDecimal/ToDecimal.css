@@ -1,0 +1,25 @@
+@import '~antd/dist/antd.css';
+
+.App {
+  text-align: center;
+}
+
+.danger {
+  color: red;
+}
+
+.hide {
+  display: none;
+}
+
+.gray {
+  color: gray;
+}
+
+.success {
+  color: green;
+}
+
+body {
+  background: #f0f2f5;
+}
