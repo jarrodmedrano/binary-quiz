@@ -122,6 +122,7 @@ function ToDecimal() {
 
   return (
     <div className="BinaryToDecimal">
+
       <Header style={{ background: 'transparent' }} />
       <Row gutter={[16, 16]}>
         <Col span={24}>
@@ -140,7 +141,7 @@ function ToDecimal() {
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <Card
-            title="Convert (Base) to Decimal"
+            title={`Convert Base ${numberBase} to Decimal`}
           >
             <h2>{renderedString}<sub>{numberBase}</sub></h2>
           </Card>
