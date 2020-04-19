@@ -1,5 +1,5 @@
 import { Button, Card, Col, Form, InputNumber, Layout, Row, Space } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import './DecimalToBase.css';
 const { Header } = Layout;
 
@@ -13,7 +13,8 @@ function DecimalToBase() {
   const [digits, setDigits] = useState<number>(2);
   const [decimal, setDecimal] = useState<number>(0);
   const [solution, setSolution] = useState<string>('');
-  const [showSolution, setShowSolution] = useState<boolean>(false);
+  const [showCalculation, setShowCalculation] = useState<boolean>(false);
+  const [calculation, setCalculation] = useState<ReactElement[]>([]);
   const [showSum, setShowSum] = useState<boolean>(false);
 
   function onBaseChange(val: number): void {
@@ -28,19 +29,22 @@ function DecimalToBase() {
     setDecimal(Number(dec));
   }
 
-  function decimalToBase(dec: number, sol: string): void {
+  function decimalToBase(dec: number, tempSolution: string, calc: ReactElement[]): void {
     if (dec <= 0) {
-      setSolution(sol);
+      setSolution(tempSolution);
+      setCalculation(calc);
       return;
     }
     const result = Math.floor(dec / numberBase);
-    let rem = (dec - (numberBase * result)).toString();
-    rem += sol;
-    return decimalToBase(result, rem);
+    let remainder = (dec - (numberBase * result)).toString();
+    calc.push(<p>{`${dec} / ${numberBase} = rem ${remainder}`}</p>);
+
+    remainder += tempSolution;
+    return decimalToBase(result, remainder, calc);
   }
 
   useEffect(() => {
-    decimalToBase(decimal, '');
+    decimalToBase(decimal, '', []);
   }, [decimal]);
 
   useEffect(() => {
@@ -60,6 +64,10 @@ function DecimalToBase() {
   const toggleSum = React.useCallback(() => {
     setShowSum(!showSum);
   }, [showSum]);
+
+  const toggleCalculation = React.useCallback(() => {
+    setShowCalculation(!showCalculation);
+  }, [showCalculation]);
 
   return (
     <div className="BinaryToDecimal">
@@ -95,6 +103,9 @@ function DecimalToBase() {
             <Button onClick={toggleSum}>
               {showSum ? 'Hide result' : 'Show result'}
             </Button>
+            <Button onClick={toggleCalculation}>
+              {showCalculation ? 'Hide Calculation' : 'Show Calculation'}
+            </Button>
           </Space>
         </Col>
       </Row>
@@ -104,6 +115,7 @@ function DecimalToBase() {
             title="Solution"
           >
             <h2 className="success">{showSum ? solution : null}</h2>
+            {showCalculation ? calculation.reverse().map((item) => item) : null}
           </Card>
         </Col>
       </Row>
