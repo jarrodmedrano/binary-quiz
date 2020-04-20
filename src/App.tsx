@@ -17,7 +17,7 @@ function App() {
             style={{ height: '100%', borderRight: 0 }}
           >
             <Menu.Item key="1">
-              <Link to="/">Convert to Decimal</Link>
+              <Link to="/binary-quiz/">Convert to Decimal</Link>
             </Menu.Item>
             <Menu.Item key="2">
               <Link to="/decimal-to-base/">Convert to Base</Link>
@@ -25,7 +25,7 @@ function App() {
           </Menu>
         </Sider>
         <Switch>
-          <Route path="/" exact={true}>
+          <Route path="/binary-quiz/" exact={true}>
             <Content style={{ padding: '0 50px' }}>
               <ToDecimal />
             </Content>
