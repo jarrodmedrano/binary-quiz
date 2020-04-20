@@ -37,7 +37,7 @@ function DecimalToBase() {
     }
     const result = Math.floor(dec / numberBase);
     let remainder = (dec - (numberBase * result)).toString();
-    calc.push(<p>{`${dec} / ${numberBase} = rem ${remainder}`}</p>);
+    calc.push(<p key={dec / numberBase}>{`${dec} / ${numberBase} = rem ${remainder}`}</p>);
 
     remainder += tempSolution;
     return decimalToBase(result, remainder, calc);
