@@ -45,7 +45,7 @@ function DecimalToBase() {
 
   useEffect(() => {
     decimalToBase(decimal, '', []);
-  }, [decimal]);
+  }, [decimal, numberBase]);
 
   useEffect(() => {
     generateRandomDecimal(digits);
@@ -77,7 +77,7 @@ function DecimalToBase() {
           <Form.Item label="Number Base">
             <InputNumber
               name="base"
-              min={1}
+              min={2}
               max={100}
               defaultValue={numberBase}
               onChange={onBaseChange}
