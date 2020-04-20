@@ -23,3 +23,15 @@
 body {
   background: #f0f2f5;
 }
+
+.BinaryToDecimal {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100vh;
+}
+
+.ant-layout-footer {
+  margin-top: auto;
+  padding-left: 0;
+}

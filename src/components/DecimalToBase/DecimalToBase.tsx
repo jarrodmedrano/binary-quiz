@@ -1,7 +1,7 @@
 import { Button, Card, Col, Form, InputNumber, Layout, Row, Space } from 'antd';
 import React, { ReactElement, useEffect, useState } from 'react';
 import './DecimalToBase.css';
-const { Header } = Layout;
+const { Header, Content, Footer, Sider } = Layout;
 
 interface IPlaceValue {
   placeValue: number;
@@ -119,6 +119,7 @@ function DecimalToBase() {
           </Card>
         </Col>
       </Row>
+      <Footer><a href="http://www.slashclick.com/" target="_blank">Designed by Slashclick.com</a></Footer>
     </div>
   );
 }

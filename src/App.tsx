@@ -36,7 +36,6 @@ function App() {
             </Content>
           </Route>
         </Switch>
-        <Footer />
       </Layout>
     </BrowserRouter>
   );
