@@ -49,7 +49,7 @@ function DecimalToBase() {
 
   useEffect(() => {
     generateRandomDecimal(digits);
-  }, [digits]);
+  }, [digits, numberBase]);
 
   const decrement = React.useCallback(() => {
     if (digits > 1) {
@@ -78,7 +78,7 @@ function DecimalToBase() {
             <InputNumber
               name="base"
               min={2}
-              max={100}
+              max={16}
               defaultValue={numberBase}
               onChange={onBaseChange}
               autoFocus={true}

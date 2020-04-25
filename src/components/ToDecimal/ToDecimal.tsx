@@ -23,7 +23,7 @@ function ToDecimal() {
   function generateRandomBinary(numbers: number): void {
     let binaryString = '';
     for (let i = 0; i < numbers; i++) {
-      binaryString += (Math.random() > 0.5) ? 1 : 0;
+      binaryString += Math.floor(Math.random() * Math.floor(numberBase));
     }
     setBinaryNum(binaryString);
   }
@@ -50,7 +50,7 @@ function ToDecimal() {
     const binaryString = placeValueMap.map<ReactElement>((item, index) => {
       return (
         <span className="binaryString" key={index}>
-          {item.digit} <sup className={showPlaceValue === true ? 'show' : 'hide'}><span className={item.digit === '1' ? 'success' : 'gray'}>{item.placeValue}</span></sup>
+          {item.digit} <sup className={showPlaceValue === true ? 'show' : 'hide'}><span className={item.digit !== '0' ? 'success' : 'gray'}>{item.placeValue}</span></sup>
         </span>
       );
     });
@@ -78,7 +78,7 @@ function ToDecimal() {
 
   useEffect(() => {
     generateRandomBinary(digits);
-  }, [digits]);
+  }, [digits, numberBase]);
 
   useEffect(() => {
     mapPlaceValues(binaryNum);
@@ -130,7 +130,7 @@ function ToDecimal() {
             <InputNumber
               name="base"
               min={1}
-              max={100}
+              max={16}
               defaultValue={numberBase}
               onChange={onBaseChange}
               autoFocus={true}
