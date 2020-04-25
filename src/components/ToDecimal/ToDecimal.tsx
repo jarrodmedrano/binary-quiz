@@ -20,12 +20,33 @@ function ToDecimal() {
   const [renderedString, setRenderedString] = useState<ReactElement[]>([]);
   const [solutionString, setSolutionString] = useState<string>('');
 
-  function generateRandomBinary(numbers: number): void {
+  function generateRandomString(numbers: number): void {
     let binaryString = '';
     for (let i = 0; i < numbers; i++) {
-      binaryString += Math.floor(Math.random() * Math.floor(numberBase));
+      binaryString += generateRandomNumber();
     }
     setBinaryNum(binaryString);
+  }
+
+  function generateRandomNumber(): string {
+    const rando = Math.floor(Math.random() * Math.floor(numberBase));
+    if (numberBase >= 10) {
+      switch (rando) {
+        case 10:
+        return 'A';
+        case 11:
+        return 'B';
+        case 12:
+        return 'C';
+        case 13:
+        return 'D';
+        case 14:
+        return 'E';
+        case 15:
+        return 'F';
+      }
+    }
+    return rando.toString();
   }
 
   function mapPlaceValues(str: string): void {
@@ -77,7 +98,7 @@ function ToDecimal() {
   }
 
   useEffect(() => {
-    generateRandomBinary(digits);
+    generateRandomString(digits);
   }, [digits, numberBase]);
 
   useEffect(() => {
